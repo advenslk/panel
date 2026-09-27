@@ -1245,6 +1245,203 @@ button.Button__ButtonStyle-sc-1qu1gou-0.dLAOsI span {
   }
 }
 
+
+/* =========================================================
+   HELZERX AUTH V5 — structural alignment fix
+   IMPORTANT: keep the reference composition; do not let
+   Nebula's original flex/margin rules move the glass form.
+   ========================================================= */
+
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
+  display: block !important;
+  isolation: isolate !important;
+  margin: 0 !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translate(-50%, -50%) !important;
+  overflow: visible !important;
+}
+
+div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
+  position: absolute !important;
+  left: 0 !important;
+  right: auto !important;
+  top: 0 !important;
+  bottom: auto !important;
+  float: none !important;
+  margin: 0 !important;
+  width: 52% !important;
+  max-width: 52% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  transform: none !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  z-index: 20 !important;
+}
+
+/* The artwork is ALWAYS the right-hand overlapping panel. */
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
+  left: auto !important;
+  right: 0 !important;
+  z-index: 10 !important;
+  width: 49% !important;
+  height: 125.45% !important;
+  top: -14.6% !important;
+  background-size: 100% 100% !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  border-radius: 42px !important;
+}
+
+/* Never allow Nebula's original second visual/image block
+   to appear on top of the custom reference composition. */
+div.LoginFormContainer___StyledDiv2-sc-cyh04c-4,
+div[class*="LoginFormContainer___StyledDiv2"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Make the actual form content use the complete left half. */
+div.LoginFormContainer___StyledDiv-sc-cyh04c-3 > * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Desktop reference proportions. */
+@media (min-width: 1361px) {
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
+    width: 1310px !important;
+    height: 562px !important;
+    max-width: calc(100vw - 48px) !important;
+    max-height: calc(100vh - 48px) !important;
+  }
+
+  div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
+    width: 52% !important;
+    max-width: 52% !important;
+    padding: 74px 130px 48px !important;
+    border-radius: 42px !important;
+  }
+
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
+    width: 49% !important;
+    height: 125.45% !important;
+    top: -14.6% !important;
+    right: 0 !important;
+    background-size: 100% 100% !important;
+  }
+}
+
+/* Tablet: preserve the same left-card/right-art composition. */
+@media (min-width: 761px) and (max-width: 1360px) {
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
+    width: calc(100vw - 48px) !important;
+    height: min(562px, calc(100vh - 48px)) !important;
+  }
+
+  div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
+    left: 0 !important;
+    width: 52% !important;
+    max-width: 52% !important;
+    padding: clamp(40px, 7vw, 74px) clamp(34px, 9.9vw, 130px) 40px !important;
+  }
+
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
+    right: 0 !important;
+    width: 49% !important;
+    height: 125.45% !important;
+    top: -14.6% !important;
+    background-size: 100% 100% !important;
+  }
+}
+
+/* Mobile: use the same visual composition at a readable scale.
+   The artwork remains on the right and overlaps the glass card. */
+@media (max-width: 760px) {
+  html, body {
+    overflow: hidden !important;
+  }
+
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
+    width: calc(100vw - 24px) !important;
+    height: min(500px, calc(100vh - 150px)) !important;
+    min-height: 0 !important;
+    max-height: 500px !important;
+    padding: 0 !important;
+    border-radius: 28px !important;
+  }
+
+  div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
+    left: 0 !important;
+    top: 0 !important;
+    width: 72% !important;
+    max-width: 72% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    padding: 50px 30px 25px !important;
+    border-radius: 28px !important;
+    background: rgba(245,220,241,.66) !important;
+  }
+
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
+    left: auto !important;
+    right: 0 !important;
+    top: 7% !important;
+    width: 52% !important;
+    height: 86% !important;
+    border-radius: 28px !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    opacity: 1 !important;
+  }
+
+  .LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+  .LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy {
+    margin-bottom: 28px !important;
+  }
+
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+  input[type="text"],
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+  input[type="email"],
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+  input[type="password"] {
+    height: 44px !important;
+  }
+
+  .LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+  button.Button__ButtonStyle-sc-1qu1gou-0.dLAOsI,
+  .LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+  .dLAOsI:not(:disabled) {
+    min-height: 50px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
+    width: calc(100vw - 18px) !important;
+    height: min(470px, calc(100vh - 140px)) !important;
+    border-radius: 25px !important;
+  }
+
+  div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
+    width: 78% !important;
+    max-width: 78% !important;
+    padding: 42px 23px 22px !important;
+    border-radius: 25px !important;
+  }
+
+  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
+    width: 49% !important;
+    height: 84% !important;
+    top: 8% !important;
+    right: 0 !important;
+    border-radius: 25px !important;
+  }
+}
+
 </style>
 
 <script>
