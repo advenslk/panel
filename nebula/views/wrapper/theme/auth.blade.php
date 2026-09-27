@@ -685,18 +685,58 @@
     enhanceRightFormPanel();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyHelzerXAuthMode);
-  } else {
-    applyHelzerXAuthMode();
+  var initTimer = null;
+  var observer = null;
+
+  function safeApply() {
+    if (initTimer) {
+      clearTimeout(initTimer);
+    }
+
+    initTimer = setTimeout(function () {
+      try {
+        applyHelzerXAuthMode();
+      } catch (e) {
+        // Never allow auth theming errors to break the Pterodactyl auth app.
+      }
+    }, 80);
   }
 
-  var observer = new MutationObserver(function () {
-    buildLeftGeometricPanel();
-    enhanceRightFormPanel();
-  });
-  observer.observe(document.documentElement, { childList: true, subtree: true });
-  window.addEventListener('popstate', applyHelzerXAuthMode);
+  function startAuthEnhancement() {
+    safeApply();
+
+    // Watch only for React rendering/re-rendering. Debounce the callback so
+    // the theme never creates a DOM mutation loop or blocks the auth UI.
+    if (window.MutationObserver) {
+      observer = new MutationObserver(function () {
+        safeApply();
+      });
+
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    }
+
+    // React can mount the auth form after the first paint.
+    var retries = 0;
+    var retryTimer = setInterval(function () {
+      retries++;
+      safeApply();
+
+      if (document.querySelector('div.LoginFormContainer__Container-sc-cyh04c-0') || retries >= 20) {
+        clearInterval(retryTimer);
+      }
+    }, 150);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startAuthEnhancement, { once: true });
+  } else {
+    startAuthEnhancement();
+  }
+
+  window.addEventListener('popstate', safeApply);
 })();
 </script>
 @endif
