@@ -1247,200 +1247,310 @@ button.Button__ButtonStyle-sc-1qu1gou-0.dLAOsI span {
 
 
 /* =========================================================
-   HELZERX AUTH V5 — structural alignment fix
-   IMPORTANT: keep the reference composition; do not let
-   Nebula's original flex/margin rules move the glass form.
+   HELZERX AUTH V6 — exact reference composition
+   The whole composition is built at the reference 1310x562
+   canvas and proportionally scaled on smaller screens.
    ========================================================= */
 
 div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
   display: block !important;
   isolation: isolate !important;
-  margin: 0 !important;
+  position: fixed !important;
   left: 50% !important;
+  top: 50% !important;
   right: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 1310px !important;
+  height: 562px !important;
+  min-height: 562px !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
   transform: translate(-50%, -50%) !important;
   overflow: visible !important;
-}
-
-div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
-  position: absolute !important;
-  left: 0 !important;
-  right: auto !important;
-  top: 0 !important;
-  bottom: auto !important;
-  float: none !important;
-  margin: 0 !important;
-  width: 52% !important;
-  max-width: 52% !important;
-  height: 100% !important;
-  min-height: 100% !important;
-  transform: none !important;
-  display: block !important;
-  box-sizing: border-box !important;
-  z-index: 20 !important;
-}
-
-/* The artwork is ALWAYS the right-hand overlapping panel. */
-div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
-  left: auto !important;
-  right: 0 !important;
-  z-index: 10 !important;
-  width: 49% !important;
-  height: 125.45% !important;
-  top: -14.6% !important;
-  background-size: 100% 100% !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
   border-radius: 42px !important;
+  border: 1px solid rgba(255,255,255,.42) !important;
+  background: rgba(236,203,234,.46) !important;
+  box-shadow:
+    0 35px 90px rgba(55,31,68,.24),
+    inset 0 1px 0 rgba(255,255,255,.55) !important;
+  backdrop-filter: blur(28px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(120%) !important;
 }
 
-/* Never allow Nebula's original second visual/image block
-   to appear on top of the custom reference composition. */
-div.LoginFormContainer___StyledDiv2-sc-cyh04c-4,
-div[class*="LoginFormContainer___StyledDiv2"] {
+/* Hide every original Nebula child except the actual form column.
+   This removes the gray/original artwork block seen on mobile. */
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE > div:not(.LoginFormContainer___StyledDiv-sc-cyh04c-3) {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
 
-/* Make the actual form content use the complete left half. */
+/* Left translucent glass card: 668px x 562px in the reference. */
+div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 668px !important;
+  max-width: 668px !important;
+  height: 562px !important;
+  min-height: 562px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 74px 130px 48px !important;
+  display: block !important;
+  float: none !important;
+  transform: none !important;
+  z-index: 20 !important;
+  border-radius: 42px !important;
+  background: rgba(245,220,241,.23) !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
 div.LoginFormContainer___StyledDiv-sc-cyh04c-3 > * {
   max-width: 100% !important;
   box-sizing: border-box !important;
 }
 
-/* Desktop reference proportions. */
-@media (min-width: 1361px) {
+/* Reference artwork: 640px x 780px, overlapping the glass card. */
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 30 !important;
+  left: 800px !important;
+  right: auto !important;
+  top: -155px !important;
+  width: 640px !important;
+  height: 780px !important;
+  border-radius: 42px !important;
+  background-size: 100% 100% !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-color: #0b0b19 !important;
+  pointer-events: none !important;
+  box-shadow:
+    0 22px 52px rgba(25,16,43,.22),
+    inset 0 1px 0 rgba(255,255,255,.12) !important;
+}
+
+/* No central pseudo glow over the artwork. */
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::before {
+  display: none !important;
+}
+
+/* Reference heading. */
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+.LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy {
+  position: relative !important;
+  z-index: 25 !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 0 42px !important;
+  padding: 0 !important;
+  text-align: center !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+  color: #45284a !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+.LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy::before {
+  content: "Sign In" !important;
+  display: block !important;
+  color: #45284a !important;
+  font-size: 35px !important;
+  line-height: 1.12 !important;
+  font-weight: 750 !important;
+  letter-spacing: -.9px !important;
+}
+
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+.LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy::after {
+  content: "Welcome back" !important;
+  display: block !important;
+  margin-top: 8px !important;
+  color: rgba(57,35,64,.60) !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+  font-weight: 500 !important;
+}
+
+body.hx-auth-register
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+.LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy::before {
+  content: "Sign Up" !important;
+}
+
+body.hx-auth-register
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+.LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy::after {
+  content: "Create your account" !important;
+}
+
+/* Hide the real logo image but keep the semantic heading node. */
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+.LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy img,
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+.LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy svg {
+  display: none !important;
+}
+
+/* Reference field labels. */
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE label {
+  color: #35213d !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+  font-weight: 650 !important;
+  margin: 0 !important;
+}
+
+/* Reference underline inputs. */
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+input[type="text"],
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+input[type="email"],
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+input[type="password"] {
+  width: 100% !important;
+  height: 48px !important;
+  box-sizing: border-box !important;
+  padding: 0 34px 0 0 !important;
+  color: #2c1b31 !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-bottom: 2px solid rgba(54,33,63,.45) !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  font-size: 14px !important;
+}
+
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+input[type="text"]::placeholder,
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+input[type="email"]::placeholder,
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+input[type="password"]::placeholder {
+  color: rgba(49,29,58,.82) !important;
+}
+
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+input[type="text"]:focus,
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+input[type="email"]:focus,
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+input[type="password"]:focus {
+  border-bottom-color: #70466f !important;
+}
+
+/* Reference icons. */
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE input[type="email"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23251a2c' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='m3 7 9 6 9-6'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 2px center !important;
+  background-size: 20px 20px !important;
+}
+
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE input[type="password"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23251a2c' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='10' width='14' height='10' rx='2'/%3E%3Cpath d='M8 10V7a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 2px center !important;
+  background-size: 20px 20px !important;
+}
+
+body.hx-auth-register
+div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE input[type="text"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23251a2c' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='3'/%3E%3Cpath d='M5 20a7 7 0 0 1 14 0'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 2px center !important;
+  background-size: 20px 20px !important;
+}
+
+/* Reference purple gradient button. */
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+button.Button__ButtonStyle-sc-1qu1gou-0.dLAOsI,
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+.dLAOsI:not(:disabled) {
+  width: 100% !important;
+  min-height: 58px !important;
+  margin-top: 20px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg,#a45e9b 0%,#241a36 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(55,28,65,.20) !important;
+}
+
+.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
+button.Button__ButtonStyle-sc-1qu1gou-0.dLAOsI span {
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 750 !important;
+}
+
+/* Reference footer text. */
+.LoginFormContainer___StyledP-sc-cyh04c-7.llNNfK {
+  margin: 34px 0 0 !important;
+  padding: 0 !important;
+  color: rgba(47,29,56,.82) !important;
+  opacity: 1 !important;
+  text-align: center !important;
+  font-size: 13px !important;
+}
+
+.LoginFormContainer___StyledP-sc-cyh04c-7.llNNfK a {
+  color: #6c3f72 !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+/* Reference has no social-login row. */
+.SocialLogin\:container {
+  display: none !important;
+}
+
+/* Desktop: exact reference canvas. */
+@media (min-width: 761px) {
   div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
-    width: 1310px !important;
-    height: 562px !important;
-    max-width: calc(100vw - 48px) !important;
-    max-height: calc(100vh - 48px) !important;
-  }
-
-  div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
-    width: 52% !important;
-    max-width: 52% !important;
-    padding: 74px 130px 48px !important;
-    border-radius: 42px !important;
-  }
-
-  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
-    width: 49% !important;
-    height: 125.45% !important;
-    top: -14.6% !important;
-    right: 0 !important;
-    background-size: 100% 100% !important;
+    transform: translate(-50%, -50%) !important;
   }
 }
 
-/* Tablet: preserve the same left-card/right-art composition. */
-@media (min-width: 761px) and (max-width: 1360px) {
-  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
-    width: calc(100vw - 48px) !important;
-    height: min(562px, calc(100vh - 48px)) !important;
-  }
-
-  div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
-    left: 0 !important;
-    width: 52% !important;
-    max-width: 52% !important;
-    padding: clamp(40px, 7vw, 74px) clamp(34px, 9.9vw, 130px) 40px !important;
-  }
-
-  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
-    right: 0 !important;
-    width: 49% !important;
-    height: 125.45% !important;
-    top: -14.6% !important;
-    background-size: 100% 100% !important;
-  }
-}
-
-/* Mobile: use the same visual composition at a readable scale.
-   The artwork remains on the right and overlaps the glass card. */
+/* Mobile/tablet: scale the entire 1310x562 reference canvas
+   instead of independently shrinking its pieces. */
 @media (max-width: 760px) {
   html, body {
     overflow: hidden !important;
   }
 
   div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
-    width: calc(100vw - 24px) !important;
-    height: min(500px, calc(100vh - 150px)) !important;
-    min-height: 0 !important;
-    max-height: 500px !important;
-    padding: 0 !important;
-    border-radius: 28px !important;
-  }
-
-  div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
-    left: 0 !important;
-    top: 0 !important;
-    width: 72% !important;
-    max-width: 72% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    padding: 50px 30px 25px !important;
-    border-radius: 28px !important;
-    background: rgba(245,220,241,.66) !important;
-  }
-
-  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
-    left: auto !important;
-    right: 0 !important;
-    top: 7% !important;
-    width: 52% !important;
-    height: 86% !important;
-    border-radius: 28px !important;
-    background-size: 100% 100% !important;
-    background-position: center center !important;
-    opacity: 1 !important;
-  }
-
-  .LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
-  .LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy {
-    margin-bottom: 28px !important;
-  }
-
-  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
-  input[type="text"],
-  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
-  input[type="email"],
-  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
-  input[type="password"] {
-    height: 44px !important;
-  }
-
-  .LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
-  button.Button__ButtonStyle-sc-1qu1gou-0.dLAOsI,
-  .LoginFormContainer__Container-sc-cyh04c-0.cEWvSE
-  .dLAOsI:not(:disabled) {
-    min-height: 50px !important;
+    --hx-scale: min(
+      calc((100vw - 24px) / 1310),
+      calc((100vh - 160px) / 562)
+    );
+    transform: translate(-50%, -50%) scale(var(--hx-scale)) !important;
+    transform-origin: center center !important;
   }
 }
 
+/* Very narrow phones: leave a small edge margin. */
 @media (max-width: 420px) {
   div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE {
-    width: calc(100vw - 18px) !important;
-    height: min(470px, calc(100vh - 140px)) !important;
-    border-radius: 25px !important;
-  }
-
-  div.LoginFormContainer___StyledDiv-sc-cyh04c-3 {
-    width: 78% !important;
-    max-width: 78% !important;
-    padding: 42px 23px 22px !important;
-    border-radius: 25px !important;
-  }
-
-  div.LoginFormContainer__Container-sc-cyh04c-0.cEWvSE::after {
-    width: 49% !important;
-    height: 84% !important;
-    top: 8% !important;
-    right: 0 !important;
-    border-radius: 25px !important;
+    --hx-scale: min(
+      calc((100vw - 16px) / 1310),
+      calc((100vh - 140px) / 562)
+    );
   }
 }
+
+/* =========================================================
+   End HELZERX AUTH V6
+   ========================================================= */
 
 </style>
 
