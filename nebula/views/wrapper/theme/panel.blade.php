@@ -731,4 +731,145 @@
     font-size: 0.875rem !important;
     line-height: 1.25rem !important;
   }
+
+  /* =====================================================================
+     HELZERX BERRY GEOMETRIC MANAGEMENT THEME (LOGGED-IN PANEL)
+     Matches the Berry Geometric Split-Card Login & Sign Up UI
+     ===================================================================== */
+  @if(Auth::check())
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  html, body, body.bg-neutral-800 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    background: radial-gradient(circle at 22% 18%, #470d2a 0%, #2a0719 52%, #17040e 100%) fixed !important;
+    background-color: #1a0611 !important;
+    color: #fdf7fa !important;
+  }
+
+  div.App___StyledDiv-sc-2l91w7-0.fnfeQw {
+    background: transparent !important;
+  }
+
+  /* Geometric Berry Sidebar matching Left Art Panel of Login Card */
+  #sidebar, .sidebar {
+    background:
+      linear-gradient(165deg, rgba(178, 72, 121, 0.24) 0%, rgba(156, 48, 98, 0.16) 38%, rgba(45, 8, 26, 0.96) 100%),
+      linear-gradient(180deg, #5c0c30 0%, #38061d 65%, #240412 100%) !important;
+    border-right: 1px solid rgba(226, 171, 196, 0.18) !important;
+    box-shadow: 12px 0 36px rgba(12, 1, 7, 0.55) !important;
+    backdrop-filter: blur(16px) !important;
+  }
+
+  .sidebarButton {
+    border-radius: 14px !important;
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(226, 171, 196, 0.1) !important;
+    transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  .sidebarButton:hover {
+    background-color: rgba(226, 171, 196, 0.15) !important;
+    border-color: rgba(226, 171, 196, 0.35) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .sidebarButtonSelected {
+    background: linear-gradient(135deg, #b55784 0%, #902859 100%) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 6px 18px rgba(174, 80, 125, 0.42) !important;
+  }
+
+  /* Berry-Glass Server Cards, Content Boxes, Titled Boxes, and Rows */
+  .GreyRowBox-sc-1xo9c6v-0,
+  div.ContentBox___StyledDiv-sc-mjlt6f-2.iGOcRf,
+  .TitledGreyBox___StyledDiv-sc-gvsoy-0,
+  .TitledGreyBox___StyledDiv-sc-gvsoy-0.oLbNP,
+  div.style-module_2Vp6MaXq,
+  div.style-module_2XbmHEcn,
+  div.style-module_1WqkLT9X,
+  div.Modal___StyledDiv2-sc-9vzni8-3,
+  div.style-module_1RnhIT0w {
+    background: linear-gradient(145deg, rgba(61, 14, 39, 0.92) 0%, rgba(41, 9, 26, 0.96) 100%) !important;
+    border: 1px solid rgba(226, 171, 196, 0.16) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 14px 34px rgba(10, 1, 6, 0.42) !important;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  .GreyRowBox-sc-1xo9c6v-0:hover,
+  div.style-module_1WqkLT9X:hover {
+    border-color: rgba(226, 171, 196, 0.38) !important;
+    box-shadow: 0 18px 40px rgba(14, 2, 9, 0.54) !important;
+  }
+
+  div.TitledGreyBox___StyledDiv2-sc-gvsoy-1,
+  .jRrWLs {
+    background: rgba(181, 87, 132, 0.14) !important;
+    border-bottom: 1px solid rgba(226, 171, 196, 0.14) !important;
+  }
+
+  /* Signature Berry Pill Buttons matching Login & Sign Up Card */
+  .Button__ButtonStyle-sc-1qu1gou-0:not([color="red"]),
+  .style-module_3kBDV_wo:not(.style-module_Yp7-2Fw-),
+  .cDkCmT {
+    border-radius: 999px !important;
+    background: linear-gradient(180deg, #b55784 0%, #9c3062 100%) !important;
+    background-color: #ad4e7b !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 5px 15px rgba(174, 80, 125, 0.34) !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease !important;
+  }
+
+  .Button__ButtonStyle-sc-1qu1gou-0:not([color="red"]):hover,
+  .style-module_3kBDV_wo:not(.style-module_Yp7-2Fw-):hover,
+  .cDkCmT:hover {
+    filter: brightness(1.07) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 8px 20px rgba(174, 80, 125, 0.46) !important;
+  }
+
+  /* Inputs, Selects, and Textareas inside Management Panel */
+  .ZkNLd:not([type="checkbox"]):not([type="radio"]),
+  .jqTCDz:not([type="checkbox"]):not([type="radio"]),
+  input.form-input.styles-module_S9h-xMSg,
+  select.Select-sc-17exaqp-0,
+  .Input__Textarea-sc-19rce1w-1 {
+    background-color: rgba(26, 6, 17, 0.75) !important;
+    border: 1px solid rgba(226, 171, 196, 0.22) !important;
+    border-radius: 12px !important;
+    color: #fdf7fa !important;
+    font-family: 'Poppins', sans-serif !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  .ZkNLd:not([type="checkbox"]):not([type="radio"]):focus,
+  .jqTCDz:not([type="checkbox"]):not([type="radio"]):focus,
+  input.form-input.styles-module_S9h-xMSg:focus,
+  select.Select-sc-17exaqp-0:focus,
+  .Input__Textarea-sc-19rce1w-1:focus {
+    border-color: #e2abc4 !important;
+    box-shadow: 0 0 0 3px rgba(181, 87, 132, 0.25) !important;
+    outline: none !important;
+  }
+
+  /* Console Terminal & CodeMirror Editor */
+  .style-module_1n_DiqmT.style-module_1AMtO9lt,
+  .xterm-screen,
+  .xterm-viewport,
+  .terminal.xterm {
+    background-color: #14040c !important;
+  }
+
+  .relative.style-module_1AMtO9lt input {
+    background-color: #250817 !important;
+    border-top: 1px solid rgba(226, 171, 196, 0.2) !important;
+    color: #fdf7fa !important;
+  }
+  @endif
 </style>

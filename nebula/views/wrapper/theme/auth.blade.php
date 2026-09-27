@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- PTERODACTYL AUTHENTICATION THEMING — EXACT BERRY GEOMETRIC SPLIT CARD UI -->
+<!-- PTERODACTYL AUTHENTICATION THEMING — EXACT BERRY GEOMETRIC SPLIT CARD UI (LOGIN & SIGN UP) -->
 <style id="nebula-authentication-theme">
   :root {
     --hx-bg-deep: #660e36;
@@ -188,7 +188,7 @@
     pointer-events: none !important;
   }
 
-  /* Curved Seam Tabs ("LOGIN" / "SIGN IN") */
+  /* Curved Seam Tabs ("LOGIN" / "SIGN UP") */
   html body .hx-seam-tabs {
     position: absolute !important;
     right: 0 !important;
@@ -290,7 +290,7 @@
   }
 
   /* =========================================================
-     TOP GLOSSY BERRY AVATAR CIRCLE + "LOGIN" HEADING
+     TOP GLOSSY BERRY AVATAR CIRCLE + "LOGIN" / "SIGN UP" HEADING
      Positioned at top-center of Right White Panel (312px..800px)
      ========================================================= */
   html body div.LoginFormContainer__Container-sc-cyh04c-0 h2,
@@ -321,7 +321,7 @@
   html body.hx-auth-register div.LoginFormContainer__Container-sc-cyh04c-0 h2,
   html body.hx-auth-register div[class*="LoginFormContainer__Container"] h2,
   html body.hx-auth-register .LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy {
-    top: 26px !important;
+    top: 24px !important;
   }
 
   /* Glossy 3D Berry Circle Avatar Badge */
@@ -349,13 +349,13 @@
   html body.hx-auth-register div.LoginFormContainer__Container-sc-cyh04c-0 h2::before,
   html body.hx-auth-register div[class*="LoginFormContainer__Container"] h2::before,
   html body.hx-auth-register .LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy::before {
-    width: 66px !important;
-    height: 66px !important;
-    background-size: 42px 42px, 100% 100% !important;
-    margin-bottom: 10px !important;
+    width: 64px !important;
+    height: 64px !important;
+    background-size: 40px 40px, 100% 100% !important;
+    margin-bottom: 8px !important;
   }
 
-  /* "LOGIN" / "SIGN IN" Heading below Circle */
+  /* "LOGIN" / "SIGN UP" Heading below Circle */
   html body div.LoginFormContainer__Container-sc-cyh04c-0 h2::after,
   html body div[class*="LoginFormContainer__Container"] h2::after,
   html body .LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy::after {
@@ -373,7 +373,7 @@
   html body.hx-auth-register div.LoginFormContainer__Container-sc-cyh04c-0 h2::after,
   html body.hx-auth-register div[class*="LoginFormContainer__Container"] h2::after,
   html body.hx-auth-register .LoginFormContainer___StyledH-sc-cyh04c-1.hpqfJy::after {
-    content: "SIGN IN" !important;
+    content: "SIGN UP" !important;
   }
 
   html body div[class*="LoginFormContainer__Container"] h2 img,
@@ -427,7 +427,7 @@
   html body.hx-auth-register div.LoginFormContainer___StyledDiv-sc-cyh04c-3,
   html body.hx-auth-register div[class*="LoginFormContainer___StyledDiv-"],
   html body.hx-auth-register div.LoginFormContainer__Container-sc-cyh04c-0 form > div:first-of-type {
-    padding-top: 152px !important;
+    padding-top: 142px !important;
   }
 
   /* Force inner field column wrappers inside StyledDiv-sc-cyh04c-3 to span 100% width */
@@ -448,6 +448,16 @@
   html body div.LoginFormContainer__Container-sc-cyh04c-0 label,
   html body div[class*="LoginFormContainer__Container"] label {
     display: none !important;
+  }
+
+  /* Dynamic Sign Up fields container (injected when toggling to SIGN UP if not on separate route) */
+  html body .hx-dynamic-signup-fields {
+    display: none !important;
+    width: 100% !important;
+  }
+
+  html body.hx-auth-register .hx-dynamic-signup-fields {
+    display: block !important;
   }
 
   /* Full-width Underline Inputs with Indented Left Gray Icons */
@@ -479,8 +489,8 @@
 
   html body.hx-auth-register div.LoginFormContainer__Container-sc-cyh04c-0 input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
   html body.hx-auth-register div[class*="LoginFormContainer__Container"] input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]) {
-    height: 36px !important;
-    margin-bottom: 14px !important;
+    height: 38px !important;
+    margin-bottom: 16px !important;
     padding-bottom: 6px !important;
     line-height: 26px !important;
   }
@@ -520,7 +530,7 @@
   }
 
   /* =========================================================
-     ACTION ROW: Forgot Password? (Left) + LOGIN Pill (Right)
+     ACTION ROW: Forgot Password? (Left) + LOGIN / SIGN UP Pill (Right)
      Non-destructive layout: keeps React parent nodes intact!
      ========================================================= */
   html body div.LoginFormContainer__Container-sc-cyh04c-0 div.hx-action-row,
@@ -801,6 +811,49 @@
     }
   }
 
+  function ensureDynamicSignUpFields(container) {
+    var formCol = container.querySelector('div.LoginFormContainer___StyledDiv-sc-cyh04c-3, div[class*="LoginFormContainer___StyledDiv-"], form > div:first-of-type');
+    if (!formCol) return;
+
+    // Only inject dynamic Sign Up fields if the current form has <= 2 visible inputs
+    // (i.e. we are on /auth/login and switching to SIGN UP inline)
+    var nativeInputs = formCol.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not(.hx-dynamic-input)');
+    if (nativeInputs.length > 2) return;
+
+    if (!formCol.querySelector('.hx-dynamic-signup-fields')) {
+      var firstInput = nativeInputs[0];
+      var targetWrapper = firstInput ? firstInput.closest('div') : null;
+      var extraFields = document.createElement('div');
+      extraFields.className = 'hx-dynamic-signup-fields';
+      extraFields.innerHTML =
+        '<input type="text" name="username" class="Input-sc-19rce1w-0 fFYzlR hx-dynamic-input" placeholder="Username" autocomplete="username" />' +
+        '<input type="password" name="password_confirmation" class="Input-sc-19rce1w-0 fFYzlR hx-dynamic-input" placeholder="Confirm Password" autocomplete="new-password" />';
+
+      var passInput = nativeInputs[1];
+      if (passInput && passInput.parentElement) {
+        // Insert Username before Email or after Email, and Confirm Password after Password
+        var usernameField = extraFields.querySelector('input[name="username"]');
+        var confirmField = extraFields.querySelector('input[name="password_confirmation"]');
+
+        var userWrap = document.createElement('div');
+        userWrap.className = 'hx-dynamic-signup-fields';
+        userWrap.appendChild(usernameField);
+
+        var confirmWrap = document.createElement('div');
+        confirmWrap.className = 'hx-dynamic-signup-fields';
+        confirmWrap.appendChild(confirmField);
+
+        if (targetWrapper && targetWrapper.parentElement) {
+          targetWrapper.parentElement.insertBefore(userWrap, targetWrapper.nextSibling);
+        }
+        var passWrap = passInput.closest('div');
+        if (passWrap && passWrap.parentElement) {
+          passWrap.parentElement.insertBefore(confirmWrap, passWrap.nextSibling);
+        }
+      }
+    }
+  }
+
   function buildLeftGeometricPanel(container) {
     if (container.querySelector('.hx-left-panel')) return;
 
@@ -828,7 +881,7 @@
       '<div class="hx-seam-tabs">' +
         '<div class="hx-tab-indicator"></div>' +
         '<button type="button" class="hx-seam-tab-btn" data-mode="login">LOGIN</button>' +
-        '<button type="button" class="hx-seam-tab-btn" data-mode="register">SIGN IN</button>' +
+        '<button type="button" class="hx-seam-tab-btn" data-mode="register">SIGN UP</button>' +
       '</div>';
 
     container.appendChild(leftPanel);
@@ -840,8 +893,12 @@
         var path = window.location.pathname.toLowerCase();
         if (mode === 'register') {
           document.body.classList.add('hx-auth-register');
+          ensureDynamicSignUpFields(container);
           if (path.indexOf('/auth/register') === -1 && savedRegisterLink) {
-            savedRegisterLink.click();
+            var href = savedRegisterLink.getAttribute('href') || '';
+            if (href && href.charAt(0) !== '#') {
+              savedRegisterLink.click();
+            }
           }
         } else {
           document.body.classList.remove('hx-auth-register');
@@ -928,6 +985,7 @@
     if (!formCol) return;
 
     var isRegister = document.body.classList.contains('hx-auth-register');
+    ensureDynamicSignUpFields(container);
 
     // Hide Pterodactyl mascot image wrapper if present
     var mascotImg = formCol.querySelector('img[src*="pterodactyl"]');
@@ -944,6 +1002,8 @@
       input.style.setProperty('max-width', '100%', 'important');
       input.style.setProperty('min-width', '100%', 'important');
       input.style.setProperty('box-sizing', 'border-box', 'important');
+
+      if (input.classList.contains('hx-dynamic-input')) return;
 
       var type = (input.getAttribute('type') || 'text').toLowerCase();
       var labelText = '';
@@ -977,7 +1037,7 @@
       }
     });
 
-    // Non-destructive alignment of Forgot Password? (left) and LOGIN pill button (right)
+    // Non-destructive alignment of Forgot Password? (left) and LOGIN / SIGN UP pill button (right)
     var submitBtn = formCol.querySelector('button[type="submit"], button.Button__ButtonStyle-sc-1qu1gou-0, button.cDkCmT');
     var forgotLink = formCol.querySelector('a[href*="password"], .LoginContainer___StyledLink-sc-qtrnpk-4');
 
@@ -1021,7 +1081,7 @@
       submitBtn.style.setProperty('box-shadow', '0 5px 14px rgba(174, 80, 125, 0.32)', 'important');
 
       var submitSpan = submitBtn.querySelector('span');
-      var btnLabel = isRegister ? 'SIGN IN' : 'LOGIN';
+      var btnLabel = isRegister ? 'SIGN UP' : 'LOGIN';
       if (submitSpan) {
         if (submitSpan.textContent !== btnLabel) submitSpan.textContent = btnLabel;
         submitSpan.style.setProperty('color', '#ffffff', 'important');

@@ -51,14 +51,14 @@
         <div class="seam-tabs">
           <div class="tab-indicator" id="tabIndicator"></div>
           <button type="button" class="seam-tab-btn active" id="tabLogin" onclick="setMode('login')">LOGIN</button>
-          <button type="button" class="seam-tab-btn" id="tabSignIn" onclick="setMode('signin')">SIGN IN</button>
+          <button type="button" class="seam-tab-btn" id="tabSignUp" onclick="setMode('signup')">SIGN UP</button>
         </div>
       </div>
 
       <!-- Right Form Panel -->
       <div class="right-panel">
-        <div class="form-main">
-          <div class="avatar-badge">
+        <div class="form-main" id="formMain">
+          <div class="avatar-badge" id="avatarBadge">
             <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="32" cy="22.5" r="8.8" stroke="#ffffff" stroke-width="2.7"/>
               <path d="M16.5 46.5c1.5-8 6.9-12.3 15.5-12.3s14 4.3 15.5 12.3c.2 1.1-.6 2-1.8 2.2-4.1.7-8.9 1-13.7 1s-9.6-.3-13.7-1c-1.2-.2-2-1.1-1.8-2.2Z" stroke="#ffffff" stroke-width="2.7" stroke-linejoin="round"/>
@@ -78,6 +78,17 @@
             <input type="email" placeholder="Email" class="auth-input" />
           </div>
 
+          <div class="input-group signup-only" id="usernameGroup" style="display: none;">
+            <span class="field-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10.5" fill="#7e8287"/>
+                <circle cx="12" cy="9.3" r="3.3" fill="#ffffff"/>
+                <path d="M6.4 18.4c1.1-3.1 3.1-4.6 5.6-4.6s4.5 1.5 5.6 4.6a8.8 8.8 0 0 1-11.2 0Z" fill="#ffffff"/>
+              </svg>
+            </span>
+            <input type="text" placeholder="Username" class="auth-input" />
+          </div>
+
           <div class="input-group">
             <span class="field-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -87,6 +98,17 @@
               </svg>
             </span>
             <input type="password" placeholder="Password" class="auth-input" />
+          </div>
+
+          <div class="input-group signup-only" id="confirmGroup" style="display: none;">
+            <span class="field-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="#7e8287" stroke-width="2.3" stroke-linecap="round"/>
+                <rect x="5" y="10" width="14" height="11" rx="2.2" fill="#7e8287"/>
+                <circle cx="12" cy="15.5" r="1.7" fill="#ffffff"/>
+              </svg>
+            </span>
+            <input type="password" placeholder="Confirm Password" class="auth-input" />
           </div>
 
           <div class="action-row">
@@ -124,21 +146,30 @@
       function setMode(mode) {
         var indicator = document.getElementById('tabIndicator');
         var tabLogin = document.getElementById('tabLogin');
-        var tabSignIn = document.getElementById('tabSignIn');
+        var tabSignUp = document.getElementById('tabSignUp');
         var heading = document.getElementById('authHeading');
         var submitBtn = document.getElementById('submitBtn');
-        if (mode === 'signin') {
+        var usernameGroup = document.getElementById('usernameGroup');
+        var confirmGroup = document.getElementById('confirmGroup');
+        var formMain = document.getElementById('formMain');
+        if (mode === 'signup') {
           indicator.style.transform = 'translateY(68px)';
           tabLogin.classList.remove('active');
-          tabSignIn.classList.add('active');
-          heading.textContent = 'SIGN IN';
-          submitBtn.textContent = 'SIGN IN';
+          tabSignUp.classList.add('active');
+          heading.textContent = 'SIGN UP';
+          submitBtn.textContent = 'SIGN UP';
+          usernameGroup.style.display = 'flex';
+          confirmGroup.style.display = 'flex';
+          formMain.classList.add('is-signup');
         } else {
           indicator.style.transform = 'translateY(0px)';
-          tabSignIn.classList.remove('active');
+          tabSignUp.classList.remove('active');
           tabLogin.classList.add('active');
           heading.textContent = 'LOGIN';
           submitBtn.textContent = 'LOGIN';
+          usernameGroup.style.display = 'none';
+          confirmGroup.style.display = 'none';
+          formMain.classList.remove('is-signup');
         }
       }
     </script>
@@ -258,6 +289,9 @@
         flex-direction: column;
         justify-content: center;
       }
+      .form-main.is-signup {
+        padding: 22px 58px 12px;
+      }
       .avatar-badge {
         width: 82px;
         height: 82px;
@@ -270,6 +304,11 @@
         align-items: center;
         justify-content: center;
       }
+      .form-main.is-signup .avatar-badge {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 8px;
+      }
       .auth-heading {
         text-align: center;
         color: #7d1e4d;
@@ -278,6 +317,9 @@
         letter-spacing: 0.03em;
         margin: 0 0 36px;
       }
+      .form-main.is-signup .auth-heading {
+        margin-bottom: 18px;
+      }
       .input-group {
         display: flex;
         align-items: center;
@@ -285,6 +327,10 @@
         padding: 0 12px 10px 10px;
         border-bottom: 1.5px solid #9a9ea4;
         margin-bottom: 28px;
+      }
+      .form-main.is-signup .input-group {
+        padding-bottom: 6px;
+        margin-bottom: 14px;
       }
       .field-icon {
         display: inline-flex;
