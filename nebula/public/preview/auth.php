@@ -29,20 +29,23 @@
     <div class="auth-card">
       <!-- Left Geometric Ribbon Panel -->
       <div class="left-panel">
-        <svg class="left-art-svg" viewBox="0 0 330 540" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="left-art-svg" viewBox="0 0 312 550" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <filter id="preview-shadow-1" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="6" dy="6" stdDeviation="7" flood-color="#480926" flood-opacity="0.32"/>
+            <filter id="preview-shadow-upper" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="6" dy="6" stdDeviation="7" flood-color="#3d051f" flood-opacity="0.34"/>
             </filter>
-            <filter id="preview-shadow-2" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="5" dy="-5" stdDeviation="6" flood-color="#480926" flood-opacity="0.26"/>
+            <filter id="preview-shadow-lower" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="5" dy="-5" stdDeviation="6" flood-color="#3d051f" flood-opacity="0.28"/>
+            </filter>
+            <filter id="preview-shadow-corner" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="3" dy="-3" stdDeviation="4" flood-color="#480725" flood-opacity="0.20"/>
             </filter>
           </defs>
-          <rect width="330" height="540" fill="#e3aac3"/>
-          <polygon points="0,255 285,540 0,540" fill="#b85080"/>
-          <polygon points="46,208 330,492 330,540 266,540 0,274 0,254" fill="#9d3163" filter="url(#preview-shadow-2)"/>
-          <polygon points="168,0 252,0 0,252 0,168" fill="#ad4374" filter="url(#preview-shadow-1)"/>
-          <polygon points="0,0 168,0 0,168" fill="#902859"/>
+          <rect width="312" height="550" fill="#e2abc4"/>
+          <polygon points="56,215 312,471 312,550 0,550 0,271" fill="#9c3062" filter="url(#preview-shadow-lower)"/>
+          <polygon points="0,268 282,550 0,550" fill="#b95080" filter="url(#preview-shadow-corner)"/>
+          <polygon points="188,0 271,0 0,271 0,188" fill="#b24879" filter="url(#preview-shadow-upper)"/>
+          <polygon points="0,0 188,0 0,188" fill="#902859"/>
         </svg>
 
         <div class="seam-tabs">
@@ -56,10 +59,10 @@
       <div class="right-panel">
         <div class="form-main">
           <div class="avatar-badge">
-            <svg width="46" height="46" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="23" r="9" stroke="#ffffff" stroke-width="2.8"/>
-              <path d="M16 46.5c1.6-8.2 7.2-12.5 16-12.5s14.4 4.3 16 12.5c.2 1.1-.6 2-1.8 2.2-4.2.7-9.2 1.1-14.2 1.1s-10-.4-14.2-1.1c-1.2-.2-2-1.1-1.8-2.2Z" stroke="#ffffff" stroke-width="2.8" stroke-linejoin="round"/>
-              <path d="M26.5 34.8c1.6 1.7 3.5 2.5 5.5 2.5s3.9-.8 5.5-2.5" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
+            <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="22.5" r="8.8" stroke="#ffffff" stroke-width="2.7"/>
+              <path d="M16.5 46.5c1.5-8 6.9-12.3 15.5-12.3s14 4.3 15.5 12.3c.2 1.1-.6 2-1.8 2.2-4.1.7-8.9 1-13.7 1s-9.6-.3-13.7-1c-1.2-.2-2-1.1-1.8-2.2Z" stroke="#ffffff" stroke-width="2.7" stroke-linejoin="round"/>
+              <path d="M26.5 34.8c1.6 1.7 3.5 2.5 5.5 2.5s3.9-.8 5.5-2.5" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round"/>
             </svg>
           </div>
           <h2 class="auth-heading" id="authHeading">LOGIN</h2>
@@ -125,7 +128,7 @@
         var heading = document.getElementById('authHeading');
         var submitBtn = document.getElementById('submitBtn');
         if (mode === 'signin') {
-          indicator.style.transform = 'translateY(66px)';
+          indicator.style.transform = 'translateY(68px)';
           tabLogin.classList.remove('active');
           tabSignIn.classList.add('active');
           heading.textContent = 'SIGN IN';
@@ -149,25 +152,26 @@
         padding: 0;
         overflow: hidden;
         font-family: 'Poppins', sans-serif;
-        background: radial-gradient(circle at 50% 45%, #751541 0%, #630f35 55%, #4d0a28 100%);
+        background: radial-gradient(circle at 50% 50%, #6d123b 0%, #5c0c30 58%, #4b0826 100%);
         display: flex;
         align-items: center;
         justify-content: center;
       }
       .auth-card {
-        width: min(880px, calc(100vw - 32px));
-        height: 540px;
+        width: min(800px, calc(100vw - 32px));
+        height: 550px;
         background: #ffffff;
         border-radius: 16px;
-        box-shadow: 0 26px 65px rgba(20, 2, 11, 0.48);
+        box-shadow: 0 26px 65px rgba(18, 2, 10, 0.55);
         display: flex;
         overflow: hidden;
       }
       .left-panel {
         position: relative;
-        width: 37.5%;
+        width: 312px;
+        min-width: 312px;
         height: 100%;
-        background: #e3aac3;
+        background: #e2abc4;
         overflow: hidden;
         flex-shrink: 0;
       }
@@ -180,7 +184,7 @@
       .seam-tabs {
         position: absolute;
         right: 0;
-        top: 158px;
+        top: 162px;
         width: 112px;
         z-index: 5;
         display: flex;
@@ -191,7 +195,7 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: 104px;
+        width: 106px;
         height: 54px;
         background: #ffffff;
         border-radius: 999px 0 0 999px;
@@ -202,26 +206,26 @@
         content: "";
         position: absolute;
         right: 0;
-        top: -22px;
-        width: 22px;
-        height: 22px;
-        border-bottom-right-radius: 22px;
-        box-shadow: 10px 10px 0 10px #ffffff;
+        top: -24px;
+        width: 24px;
+        height: 24px;
+        border-bottom-right-radius: 24px;
+        box-shadow: 12px 12px 0 12px #ffffff;
       }
       .tab-indicator::after {
         content: "";
         position: absolute;
         right: 0;
-        bottom: -22px;
-        width: 22px;
-        height: 22px;
-        border-top-right-radius: 22px;
-        box-shadow: 10px -10px 0 10px #ffffff;
+        bottom: -24px;
+        width: 24px;
+        height: 24px;
+        border-top-right-radius: 24px;
+        box-shadow: 12px -12px 0 12px #ffffff;
       }
       .seam-tab-btn {
         position: relative;
         z-index: 2;
-        width: 104px;
+        width: 106px;
         height: 54px;
         border: 0;
         background: transparent;
@@ -234,13 +238,13 @@
         transition: color 0.25s ease;
       }
       .seam-tab-btn + .seam-tab-btn {
-        margin-top: 12px;
+        margin-top: 14px;
       }
       .seam-tab-btn.active {
         color: #111111;
       }
       .right-panel {
-        width: 62.5%;
+        width: 488px;
         height: 100%;
         background: #ffffff;
         display: flex;
@@ -249,19 +253,19 @@
       }
       .form-main {
         flex: 1;
-        padding: 46px 68px 20px;
+        padding: 42px 58px 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
       }
       .avatar-badge {
-        width: 80px;
-        height: 80px;
+        width: 82px;
+        height: 82px;
         border-radius: 50%;
         margin: 0 auto 14px;
-        background: radial-gradient(circle at 36% 24%, #dfb4ca 0%, #bf6f97 40%, #9b3568 78%, #7d1e4d 100%);
-        border: 1.5px solid rgba(255, 255, 255, 0.75);
-        box-shadow: 0 7px 16px rgba(125, 30, 77, 0.36), inset 0 2px 5px rgba(255, 255, 255, 0.45);
+        background: radial-gradient(circle at 38% 22%, #e5bed2 0%, #c3749b 38%, #9b3567 76%, #7b1d4b 100%);
+        border: 1.5px solid rgba(255, 255, 255, 0.82);
+        box-shadow: 0 7px 16px rgba(120, 24, 70, 0.36), inset 0 2px 5px rgba(255, 255, 255, 0.48);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -269,7 +273,7 @@
       .auth-heading {
         text-align: center;
         color: #7d1e4d;
-        font-size: 21px;
+        font-size: 20px;
         font-weight: 700;
         letter-spacing: 0.03em;
         margin: 0 0 36px;
@@ -277,8 +281,8 @@
       .input-group {
         display: flex;
         align-items: center;
-        gap: 14px;
-        padding-bottom: 10px;
+        gap: 12px;
+        padding: 0 12px 10px 10px;
         border-bottom: 1.5px solid #9a9ea4;
         margin-bottom: 28px;
       }
@@ -304,6 +308,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-left: 10px;
         margin-top: 2px;
       }
       .forgot-link {
@@ -321,19 +326,21 @@
         font-size: 11.5px;
         font-weight: 600;
         letter-spacing: 0.05em;
-        padding: 9px 30px;
+        height: 36px;
+        min-width: 118px;
+        padding: 0 30px;
         box-shadow: 0 5px 14px rgba(174, 80, 125, 0.32);
         cursor: pointer;
       }
       .bottom-social-bar {
-        height: 74px;
+        height: 76px;
         background: #ffffff;
         border-top: 1px solid #f2eef0;
         box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.035);
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 56px;
+        padding: 0 48px;
       }
       .social-label {
         color: #222222;
